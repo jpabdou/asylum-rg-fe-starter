@@ -41,13 +41,52 @@
     font-size: 1.2rem;
 }
 
-// .graphs-section {
-//  ADD THIS BACK IN WHEN YOU HAVE THE GRAPHS SECTION
-// }
+.graphs-section {
+    text-align: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.graphs-section p {
+    font-size: 24px;
+    font-family: 'acumin';
+}
+
+.grant-rates-by-office-graph-container {
+    // margin-top: 20%;
+    margin-bottom: 10%;
+}
+
+.grant-rates-by-nationality-container {
+    margin-bottom: 10%;
+}
+
+.gr-nationality-img {
+    height: 160px;
+    margin-bottom: 8%;
+}
+
+.gr-office-img {
+    height: 160px;
+    margin-bottom: 8%;
+}
+
+.gr-time-img {
+    height: 160px;
+    margin-bottom: 8%;
+}
+
+.grant-rates-over-time-container {
+    margin-bottom: 10%;
+}
 
 .view-more-data-btn-container {
+    display: flex;
+    justify-content: space-evenly;
     height: 44px;
-    width: 180px;
+    width: 360px;
     margin: 0 auto;
     text-align: center;
     margin-bottom: 10%;
@@ -57,6 +96,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin: 0 0 10% 0;
 }
 
 .hrf-img {
@@ -75,9 +115,42 @@
     font-size: 1.4rem;
 }
 
-// .bottom-section {
-//      ADD THIS BACK IN WHEN YOU HAVE A BOTTOM SECTION
-// }
+.bottom-section {
+    text-align: center;
+}
+
+.bottom-section h1 {
+    font-family: 'acumin';
+    font-size: 3.5rem;
+}
+
+.data-container {
+    font-family: 'moneta';
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.data-container p {
+    font-family: "acumin";
+    font-size: 1.2rem;
+}
+
+.first-data-point-container {
+    width: 25%;
+    margin-bottom: 5%;
+}
+
+.second-data-point-container {
+    width: 25%;
+    margin-bottom: 5%;
+}
+
+.third-data-point-container {
+    width: 25%;
+    margin-bottom: 5%;
+}
 
 .back-to-top {
     width: 8%;
@@ -85,6 +158,12 @@
     cursor: pointer;
     color: black;
     margin: 5% auto;
+}
+
+
+.read-more {
+    background-color: '#404C4A';
+    color: '#FFFFFF';
 }
 
 .ant-space-align-center {
@@ -206,6 +285,8 @@
     .back-to-top {
         width: 35%;
     }
+
+
 
 
 }
