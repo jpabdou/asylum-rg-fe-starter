@@ -3,6 +3,7 @@ import Plot from 'react-plotly.js';
 import { connect } from 'react-redux';
 import Table from './TableComponents/Table';
 import { colors } from '../../../../styles/data_vis_colors';
+import axios from 'axios';
 
 const { background_color, secondary_accent_color } = colors;
 

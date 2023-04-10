@@ -17,6 +17,7 @@ function SubTable(props) {
         return (
           <div
             className="sub-table-inner"
+            key={idx}
             style={{
               display: 'flex',
               flex: '1',

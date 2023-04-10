@@ -23,12 +23,11 @@ function TableRow(props) {
               <SubTable
                 dataObject={row[property]}
                 rowHeight={rowHeight} // so for the SubTablesTable the row should be an object of objects
-                key={idx}
               />
             );
           } else {
             return (
-              <div style={{ overflow: 'hidden', flex: '1' }}>
+              <div style={{ overflow: 'hidden', flex: '1' }} key={idx}>
                 <TableInnerSquare
                   innerData={row[property]}
                   rowHeight={rowHeight}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import CitizenshipMapAll from './Graphs/CitizenshipMapAll';
@@ -72,10 +72,20 @@ function GraphWrapper(props) {
                                    -- Mack 
     
     */
-
-    if (office === 'all' || !office) {
+    if (view === 'citizenship') {
       axios
-        .get(process.env.REACT_APP_API_URI, {
+        .get('https://hrf-asylum-be-b.herokuapp.com/cases/citizenshipSummary')
+        .then(result => {
+          stateSettingCallback(view, office, [
+            { citizenshipResults: result.data },
+          ]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    } else if (office === 'all' || !office) {
+      axios
+        .get('https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary', {
           // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
           params: {
             from: years[0],
@@ -83,14 +93,14 @@ function GraphWrapper(props) {
           },
         })
         .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+          stateSettingCallback(view, office, [result.data]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
         })
         .catch(err => {
           console.error(err);
         });
     } else {
       axios
-        .get(process.env.REACT_APP_API_URI, {
+        .get('https://hrf-asylum-be-b.herokuapp.com/cases/fiscalSummary', {
           // mock URL, can be simply replaced by `${Real_Production_URL}/summary` in prod!
           params: {
             from: years[0],
@@ -99,13 +109,14 @@ function GraphWrapper(props) {
           },
         })
         .then(result => {
-          stateSettingCallback(view, office, test_data); // <-- `test_data` here can be simply replaced by `result.data` in prod!
+          stateSettingCallback(view, office, [result.data]); // <-- `test_data` here can be simply replaced by `result.data` in prod!
         })
         .catch(err => {
           console.error(err);
         });
     }
   }
+
   const clearQuery = (view, office) => {
     dispatch(resetVisualizationQuery(view, office));
   };
