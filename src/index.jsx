@@ -14,7 +14,9 @@ import { LandingPage } from './components/pages/Landing';
 import { FooterContent, SubFooter } from './components/Layout/Footer';
 import { HeaderContent } from './components/Layout/Header';
 
+import { Profile } from './components/pages/Profile';
 // import { TablePage } from './components/pages/Table';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 import { Layout } from 'antd';
 import GraphsContainer from './components/pages/DataVisualizations/GraphsContainer';
@@ -29,9 +31,17 @@ const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Router>
     <Provider store={store}>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <Auth0Provider
+        domain="dev-bkz304q825mhobbc.us.auth0.com"
+        clientId="u0KRkIciJtTy0YTt9vBzVWc6BpnRROQd"
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}
+      >
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Auth0Provider>
     </Provider>
   </Router>,
   document.getElementById('root')
@@ -39,6 +49,7 @@ ReactDOM.render(
 
 export function App() {
   const { Footer, Header } = Layout;
+
   return (
     <Layout>
       <Header
@@ -54,6 +65,7 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
+        <Route path="/profile" component={Profile} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer
