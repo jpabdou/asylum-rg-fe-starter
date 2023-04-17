@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
   Route,
-  // useHistory,
+  useHistory,
   Switch,
+  Redirect,
 } from 'react-router-dom';
 
 import 'antd/dist/antd.less';
@@ -16,7 +17,7 @@ import { HeaderContent } from './components/Layout/Header';
 
 import { Profile } from './components/pages/Profile';
 // import { TablePage } from './components/pages/Table';
-import { Auth0Provider } from '@auth0/auth0-react';
+import { Auth0Provider, useAuth0 } from '@auth0/auth0-react';
 
 import { Layout } from 'antd';
 import GraphsContainer from './components/pages/DataVisualizations/GraphsContainer';
@@ -30,25 +31,35 @@ const { primary_accent_color } = colors;
 const store = configureStore({ reducer: reducer });
 ReactDOM.render(
   <Router>
-    <Provider store={store}>
-      <Auth0Provider
-        domain="dev-bkz304q825mhobbc.us.auth0.com"
-        clientId="u0KRkIciJtTy0YTt9vBzVWc6BpnRROQd"
-        authorizationParams={{
-          redirect_uri: window.location.origin,
-        }}
-      >
+    <Auth0Provider
+      domain="dev-bkz304q825mhobbc.us.auth0.com"
+      clientId="u0KRkIciJtTy0YTt9vBzVWc6BpnRROQd"
+      authorizationParams={{
+        redirect_uri: window.location.origin,
+      }}
+    >
+      <Provider store={store}>
         <React.StrictMode>
           <App />
         </React.StrictMode>
-      </Auth0Provider>
-    </Provider>
+      </Provider>
+    </Auth0Provider>
   </Router>,
   document.getElementById('root')
 );
 
 export function App() {
   const { Footer, Header } = Layout;
+  const { isAuthenticated } = useAuth0();
+  const history = useHistory();
+
+  const ProtectedRoute = ({ children }) => {
+    if (!isAuthenticated) {
+      return <Redirect to="/" />;
+    }
+
+    return children;
+  };
 
   return (
     <Layout>
@@ -65,7 +76,9 @@ export function App() {
       <Switch>
         <Route path="/" exact component={LandingPage} />
         <Route path="/graphs" component={GraphsContainer} />
-        <Route path="/profile" component={Profile} />
+        <ProtectedRoute path="/profile">
+          <Profile />
+        </ProtectedRoute>
         <Route component={NotFoundPage} />
       </Switch>
       <Footer
