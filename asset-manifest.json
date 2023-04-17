@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/asylum-rg-fe-starter/static/css/main.70f17615.chunk.css",
-    "main.js": "/asylum-rg-fe-starter/static/js/main.fc7b2d11.chunk.js",
-    "main.js.map": "/asylum-rg-fe-starter/static/js/main.fc7b2d11.chunk.js.map",
+    "main.js": "/asylum-rg-fe-starter/static/js/main.0fcb9df1.chunk.js",
+    "main.js.map": "/asylum-rg-fe-starter/static/js/main.0fcb9df1.chunk.js.map",
     "runtime-main.js": "/asylum-rg-fe-starter/static/js/runtime-main.ff927eca.js",
     "runtime-main.js.map": "/asylum-rg-fe-starter/static/js/runtime-main.ff927eca.js.map",
     "static/css/2.d02590dc.chunk.css": "/asylum-rg-fe-starter/static/css/2.d02590dc.chunk.css",
@@ -20,6 +20,6 @@
     "static/css/2.d02590dc.chunk.css",
     "static/js/2.ecc4d425.chunk.js",
     "static/css/main.70f17615.chunk.css",
-    "static/js/main.fc7b2d11.chunk.js"
+    "static/js/main.0fcb9df1.chunk.js"
   ]
 }
